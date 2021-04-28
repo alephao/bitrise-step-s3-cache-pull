@@ -29,7 +29,7 @@ func NewAwsS3(awsRegion, accessKey, secretKey, bucket string) *AwsS3 {
 	}
 }
 
-func (a *AwsS3) CacheExists(key string) bool {
+func (a *AwsS3) CacheExists(key string) (bool, string) {
 	svc := s3.New(a.sess)
 	obj, err := svc.ListObjects(&s3.ListObjectsInput{
 		Bucket:  aws.String(a.bucketName),
@@ -39,10 +39,14 @@ func (a *AwsS3) CacheExists(key string) bool {
 
 	if err != nil {
 		fmt.Printf("An error occurred when hitting the cache: %s. Assuming there is no cache\n", err.Error())
-		return false
+		return false, ""
 	}
 
-	return len(obj.Contents) > 0
+	if len(obj.Contents) > 0 {
+		return true, *obj.Contents[0].Key
+	} else {
+		return false, ""
+	}
 }
 
 func (a *AwsS3) Download(key, outputPath string) (int64, error) {
