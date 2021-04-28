@@ -6,7 +6,7 @@ import (
 )
 
 func CreateTempFolder(f func(tempFolderPath string)) {
-	path := "~/bitrise-s3-step-pull-tmp"
+	path := "/tmp/bitrise-s3-step-pull-tmp"
 	err := os.MkdirAll(path, os.ModePerm)
 
 	if err != nil {
