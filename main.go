@@ -2,22 +2,48 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
+	"strings"
 
+	"github.com/alephao/bitrise-step-s3-cache-pull/parser"
 	"github.com/mholt/archiver"
 )
 
-func GenerateRestoreKeys(restoreKeys string) []string {
-	checksumEngine := NewFileChecksumEngine()
-	keyParser := NewKeyParser(&checksumEngine)
+const (
+	BITRISE_GIT_BRANCH = "BITRISE_GIT_BRANCH"
+)
+
+func parseRestoreKeysInput(keysString string) []string {
+	var keys []string
+	for _, keyString := range strings.Split(
+		strings.TrimSpace(
+			keysString,
+		),
+		"\n",
+	) {
+		keys = append(keys, strings.TrimSpace(keyString))
+	}
+	return keys
+}
+
+func parseRestoreKeys(restoreKeys string) ([]string, error) {
+	branch := os.Getenv(BITRISE_GIT_BRANCH)
+	functionExecuter := parser.NewCacheKeyFunctionExecuter(branch)
+	keyParser := parser.NewKeyParser(&functionExecuter)
 
 	var keys []string
-	for _, keyTemplate := range keyParser.parseRestoreKeysInput(restoreKeys) {
-		key := keyParser.parse(keyTemplate)
+	for _, keyTemplate := range parseRestoreKeysInput(restoreKeys) {
+		key, err := keyParser.Parse(keyTemplate)
+
+		if err != nil {
+			return nil, err
+		}
+
 		keys = append(keys, key)
 	}
 
-	return keys
+	return keys, nil
 }
 
 func main() {
@@ -36,7 +62,13 @@ func main() {
 			bucketName,
 		)
 
-		for _, key := range GenerateRestoreKeys(restoreKeys) {
+		keys, err := parseRestoreKeys(restoreKeys)
+
+		if err != nil {
+			log.Fatalf("failed to parse keys\nerror: %s", err.Error())
+		}
+
+		for _, key := range keys {
 			fmt.Printf("Checking if cache exists for key '%s'\n", key)
 			cacheExists, cacheKey := s3.CacheExists(key)
 			if cacheExists {
