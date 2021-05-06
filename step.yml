@@ -93,8 +93,11 @@ inputs:
       title: Cache restore keys
       summary: List of keys with fallbacks to restore the cache, one per line
       description: |
+        You can use '{{ checksum path/to/file }}' to get the file's sha256 checksum.      
+        You can use '{{ branch }}' to get the name of the current branch.
+        E.g.:
         restore_keys: |
-          carthage-{{ checksum "Cartfile.resolved" }}
+          carthage-{{ branch }}-{{ checksum "Cartfile.resolved" }}
           carthage-
       category: Cache
       is_expand: false
