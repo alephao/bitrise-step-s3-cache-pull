@@ -69,30 +69,30 @@ func main() {
 		}
 
 		for _, key := range keys {
-			fmt.Printf("Checking if cache exists for key '%s'\n", key)
+			log.Printf("Checking if cache exists for key '%s'\n", key)
 			cacheExists, cacheKey := s3.CacheExists(key)
 			if cacheExists {
-				fmt.Println("Cache found! Downloading...")
+				log.Println("Cache found! Downloading...")
 				downloadedFilePath := fmt.Sprintf("%s/%s.tar.gz", tempFolderPath, cacheKey)
 				size, err := s3.Download(cacheKey, downloadedFilePath)
 
 				if err != nil {
-					fmt.Printf("Download failed with error: %s. Cancelling cache restore.\n", err.Error())
+					log.Printf("Download failed with error: %s. Cancelling cache restore.\n", err.Error())
 					return
 				}
 
-				fmt.Printf("Download was successful, file size: %d. Uncompressing...\n", size)
+				log.Printf("Download was successful, file size: %d. Uncompressing...\n", size)
 
 				err = archiver.Unarchive(downloadedFilePath, cachePath)
 
 				if err != nil {
-					fmt.Printf("Failed to uncompress: %s. Cancelling cache restore.\n", err.Error())
+					log.Printf("Failed to uncompress: %s. Cancelling cache restore.\n", err.Error())
 					return
 				}
 				return
 			}
 		}
-		fmt.Println("Cache not found.")
+		log.Println("Cache not found.")
 	})
 
 	os.Exit(0)

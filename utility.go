@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os"
 )
 
@@ -10,8 +10,7 @@ func CreateTempFolder(f func(tempFolderPath string)) {
 	err := os.MkdirAll(path, os.ModePerm)
 
 	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+		log.Fatalln(err.Error())
 	}
 
 	f(path)
@@ -19,15 +18,14 @@ func CreateTempFolder(f func(tempFolderPath string)) {
 	err = os.RemoveAll(path)
 
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err.Error())
 	}
 }
 
 func GetEnvOrExit(key string) string {
 	value := os.Getenv(key)
 	if value == "" {
-		fmt.Printf("Missing variable '%s'\n", key)
-		os.Exit(1)
+		log.Fatalf("Missing variable '%s'\n", key)
 	}
 	return value
 }
