@@ -73,7 +73,7 @@ func main() {
 			cacheExists, cacheKey := s3.CacheExists(key)
 			if cacheExists {
 				log.Println("Cache found! Downloading...")
-				downloadedFilePath := fmt.Sprintf("%s/%s.tar.gz", tempFolderPath, cacheKey)
+				downloadedFilePath := fmt.Sprintf("%s/%s.zip", tempFolderPath, cacheKey)
 				size, err := s3.Download(cacheKey, downloadedFilePath)
 
 				if err != nil {
