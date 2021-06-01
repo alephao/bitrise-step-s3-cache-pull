@@ -3,9 +3,8 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 
 app:
   envs:
-  - A_SECRET_PARAM: $A_SECRET_PARAM
-  - BITRISE_STEP_ID: better-cache-pull
-  - BITRISE_STEP_VERSION: "0.0.1"
+  - BITRISE_STEP_ID: s3-cache-pull
+  - BITRISE_STEP_VERSION: "0.1.0"
   - BITRISE_STEP_GIT_CLONE_URL: https://github.com/alephao/bitrise-step-s3-cache-pull.git
   - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
 
