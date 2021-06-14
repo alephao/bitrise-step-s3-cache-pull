@@ -10,6 +10,8 @@ app:
 
 workflows:
   test:
+    envs:
+        - BITRISE_OSX_STACK_REV_ID: "osx-stackrev"
     steps:
     - script:
         inputs:
@@ -26,7 +28,7 @@ workflows:
           file if you would not specify another value.
         run_if: true
         inputs:
-        - restore_keys: lock-{{ checksum "_tmp/Lockfile" }}
+        - restore_keys: _{{ stackrev }}-lock-{{ checksum "_tmp/Lockfile" }}
         - path: _tmp
     - script:
         inputs:

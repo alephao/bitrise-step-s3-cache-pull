@@ -11,7 +11,8 @@ import (
 )
 
 const (
-	BITRISE_GIT_BRANCH = "BITRISE_GIT_BRANCH"
+	BITRISE_GIT_BRANCH       = "BITRISE_GIT_BRANCH"
+	BITRISE_OSX_STACK_REV_ID = "BITRISE_OSX_STACK_REV_ID"
 )
 
 func parseRestoreKeysInput(keysString string) []string {
@@ -29,7 +30,8 @@ func parseRestoreKeysInput(keysString string) []string {
 
 func parseRestoreKeys(restoreKeys string) ([]string, error) {
 	branch := os.Getenv(BITRISE_GIT_BRANCH)
-	functionExecuter := parser.NewCacheKeyFunctionExecuter(branch)
+	stackrev := os.Getenv(BITRISE_OSX_STACK_REV_ID)
+	functionExecuter := parser.NewCacheKeyFunctionExecuter(branch, stackrev)
 	keyParser := parser.NewKeyParser(&functionExecuter)
 
 	var keys []string
