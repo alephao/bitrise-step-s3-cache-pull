@@ -67,6 +67,7 @@ Should be used with [S3 Cache Push](https://github.com/alephao/bitrise-step-s3-c
             <td>
                 <span>The list of keys with fallbacks to restore the cache. E.g.:</span>
                 <pre>
+{{ stackrev }}-{{ branch }}-{{ checksum "Cartfile.resolved" }}
 carthage-{{ branch }}-{{ checksum "Cartfile.resolved" }}
 carthage-{{ branch }}
 carthage-
@@ -93,3 +94,4 @@ Value|Description
 -|-
 `{{ branch }}`|The current branch being built. It will use the `$BITRISE_GIT_BRANCH` environment var.
 `{{ checksum "path/to/file" }}`|A SHA256 hash of the given file's contents. Good candidates are dependency manifests, such as `Gemfile.lock`, `Carthage.resolved`, and `Mintfile`.
+`{{ stackrev }}`|The machine's stack id. It will use th `$BITRISE_OSX_STACK_REV_ID` environment var.
