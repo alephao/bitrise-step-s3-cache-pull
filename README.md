@@ -17,10 +17,10 @@ Should be used with [S3 Cache Push](https://github.com/alephao/bitrise-step-s3-c
     <tbody>
         <tr>
             <td>
-                <b>aws_access_key_id</b>
+                <b>cache_aws_access_key_id</b>
             </td>
             <td>
-                <tt>AWS_ACCESS_KEY_ID</tt>
+                <tt>CACHE_AWS_ACCESS_KEY_ID</tt>
             </td>
             <td>
                 Your aws access key id
@@ -28,10 +28,10 @@ Should be used with [S3 Cache Push](https://github.com/alephao/bitrise-step-s3-c
         </tr>
         <tr>
             <td>
-                <b>aws_secret_access_key</b>
+                <b>cache_aws_secret_access_key</b>
             </td>
             <td>
-                <tt>AWS_SECRET_ACCESS_KEY</tt>
+                <tt>CACHE_AWS_SECRET_ACCESS_KEY</tt>
             </td>
             <td>
                 Your aws secret access key
@@ -39,10 +39,10 @@ Should be used with [S3 Cache Push](https://github.com/alephao/bitrise-step-s3-c
         </tr>
         <tr>
             <td>
-                <b>aws_region</b>
+                <b>cache_aws_region</b>
             </td>
             <td>
-                <tt>AWS_S3_REGION</tt>
+                <tt>CACHE_AWS_S3_REGION</tt>
             </td>
             <td>
                 The region of your S3 bucket. E.g.: <tt>us-east-1</tt>
@@ -50,10 +50,10 @@ Should be used with [S3 Cache Push](https://github.com/alephao/bitrise-step-s3-c
         </tr>
         <tr>
             <td>
-                <b>bucket_name</b>
+                <b>cache_bucket_name</b>
             </td>
             <td>
-                <tt>S3_BUCKET_NAME</tt>
+                <tt>CACHE_S3_BUCKET_NAME</tt>
             </td>
             <td>
                 The name of your S3 bucket. E.g.: <tt>mybucket</tt>
