@@ -18,6 +18,8 @@ const (
 	CACHE_AWS_SECRET_ACCESS_KEY = "cache_aws_secret_access_key"
 	CACHE_AWS_REGION            = "cache_aws_region"
 	CACHE_BUCKET_NAME           = "cache_bucket_name"
+	CACHE_RESTORE_KEYS          = "cache_restore_keys"
+	CACHE_PATH                  = "cache_path"
 )
 
 func parseRestoreKeysInput(keysString string) []string {
@@ -58,8 +60,8 @@ func main() {
 	awsSecretAccessKey := GetEnvOrExit(CACHE_AWS_SECRET_ACCESS_KEY)
 	awsRegion := GetEnvOrExit(CACHE_AWS_REGION)
 	bucketName := GetEnvOrExit(CACHE_BUCKET_NAME)
-	restoreKeys := GetEnvOrExit("restore_keys")
-	cachePath := GetEnvOrExit("path")
+	restoreKeys := GetEnvOrExit(CACHE_RESTORE_KEYS)
+	cachePath := GetEnvOrExit(CACHE_PATH)
 
 	CreateTempFolder(func(tempFolderPath string) {
 		s3 := NewAwsS3(

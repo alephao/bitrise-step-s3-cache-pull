@@ -61,7 +61,7 @@ Should be used with [S3 Cache Push](https://github.com/alephao/bitrise-step-s3-c
         </tr>
         <tr>
             <td>
-                <b>restore_keys</b>
+                <b>cache_restore_keys</b>
             </td>
             <td>-</td>
             <td>
@@ -76,7 +76,7 @@ carthage-
         </tr>
         <tr>
             <td>
-                <b>path</b>
+                <b>cache_path</b>
             </td>
             <td>-</td>
             <td>

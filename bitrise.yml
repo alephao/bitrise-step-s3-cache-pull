@@ -28,8 +28,8 @@ workflows:
           file if you would not specify another value.
         run_if: true
         inputs:
-        - restore_keys: _{{ stackrev }}-lock-{{ checksum "_tmp/Lockfile" }}
-        - path: _tmp
+        - cache_restore_keys: _{{ stackrev }}-lock-{{ checksum "_tmp/Lockfile" }}
+        - cache_path: _tmp
     - script:
         inputs:
         - content: |
