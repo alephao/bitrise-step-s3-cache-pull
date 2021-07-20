@@ -10,7 +10,6 @@ Should be used with [S3 Cache Push](https://github.com/alephao/bitrise-step-s3-c
     <thead>
         <tr>
             <th>Input</th>
-            <th>Environment Var</th>
             <th>Description</th>
         </tr>
     </thead>
@@ -18,9 +17,6 @@ Should be used with [S3 Cache Push](https://github.com/alephao/bitrise-step-s3-c
         <tr>
             <td>
                 <b>cache_aws_access_key_id</b>
-            </td>
-            <td>
-                <tt>CACHE_AWS_ACCESS_KEY_ID</tt>
             </td>
             <td>
                 Your aws access key id
@@ -31,18 +27,12 @@ Should be used with [S3 Cache Push](https://github.com/alephao/bitrise-step-s3-c
                 <b>cache_aws_secret_access_key</b>
             </td>
             <td>
-                <tt>CACHE_AWS_SECRET_ACCESS_KEY</tt>
-            </td>
-            <td>
                 Your aws secret access key
             </td>
         </tr>
         <tr>
             <td>
                 <b>cache_aws_region</b>
-            </td>
-            <td>
-                <tt>CACHE_AWS_S3_REGION</tt>
             </td>
             <td>
                 The region of your S3 bucket. E.g.: <tt>us-east-1</tt>
@@ -53,9 +43,6 @@ Should be used with [S3 Cache Push](https://github.com/alephao/bitrise-step-s3-c
                 <b>cache_bucket_name</b>
             </td>
             <td>
-                <tt>CACHE_S3_BUCKET_NAME</tt>
-            </td>
-            <td>
                 The name of your S3 bucket. E.g.: <tt>mybucket</tt>
             </td>
         </tr>
@@ -63,7 +50,6 @@ Should be used with [S3 Cache Push](https://github.com/alephao/bitrise-step-s3-c
             <td>
                 <b>cache_restore_keys</b>
             </td>
-            <td>-</td>
             <td>
                 <span>The list of keys with fallbacks to restore the cache. E.g.:</span>
                 <pre>
@@ -78,7 +64,6 @@ carthage-
             <td>
                 <b>cache_path</b>
             </td>
-            <td>-</td>
             <td>
                 Path to extract the file or directory cached. For instance, if you used <a href="https://github.com/alephao/bitrise-step-s3-cache-push">S3 Cache Push</a> with the path <tt>./Carthage</tt> then this value should be <tt>./</tt>
             </td>
