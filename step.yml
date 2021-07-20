@@ -33,7 +33,7 @@ toolkit:
     package_name: github.com/alephao/bitrise-step-s3-cache-pull
 
 inputs:
-  - cache_aws_access_key_id: $CACHE_AWS_ACCESS_KEY_ID
+  - cache_aws_access_key_id:
     opts:
       title: AWS_ACCESS_KEY_ID
       category: AWS Access
@@ -47,7 +47,7 @@ inputs:
       is_required: true
       is_sensitive: true
 
-  - cache_aws_secret_access_key: $CACHE_AWS_SECRET_ACCESS_KEY
+  - cache_aws_secret_access_key:
     opts:
       title: AWS_SECRET_ACCESS_KEY
       category: AWS Access
@@ -61,7 +61,7 @@ inputs:
       is_required: true
       is_sensitive: true
 
-  - cache_aws_region: $CACHE_AWS_S3_REGION
+  - cache_aws_region:
     opts:
       title: AWS Region
       summary: The region of the S3 bucket
@@ -97,7 +97,7 @@ inputs:
         - me-south-1
         - af-south-1
 
-  - cache_bucket_name: $CACHE_S3_BUCKET_NAME
+  - cache_bucket_name:
     opts:
       title: Bucket Name
       category: AWS Bucket
