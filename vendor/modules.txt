@@ -79,7 +79,7 @@ github.com/nwaples/rardecode
 ## explicit
 github.com/pierrec/lz4
 github.com/pierrec/lz4/internal/xxh32
-# github.com/ulikunitz/xz v0.5.7
+# github.com/ulikunitz/xz v0.5.8
 ## explicit
 github.com/ulikunitz/xz
 github.com/ulikunitz/xz/internal/hash
